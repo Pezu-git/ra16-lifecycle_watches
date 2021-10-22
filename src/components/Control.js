@@ -7,12 +7,12 @@ const initialState = {
 }
 
 const Control = ({addNewWatches}) => {
-  const [watch, setWatch] = useState(initialState);
+  const [formValues, setFormValues] = useState(initialState);
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
     const  payload = {
-      ...watch,
+      ...formValues,
       id: shortid.generate(),
     }
     // setWatch({
@@ -24,7 +24,7 @@ const Control = ({addNewWatches}) => {
 
   const onChangeHandler = (event) => {
     const {name, value} = event.target;
-    setWatch(prevState => ({...prevState, [name]: value}));
+    setFormValues(prevState => ({...prevState, [name]: value}));
 
   }
 
@@ -37,7 +37,7 @@ const Control = ({addNewWatches}) => {
           className="form-control"
           id="nameWatch"
           name="name"
-          value={watch.name}
+          value={formValues.name}
           onChange={onChangeHandler}
           required/>
       </div>
@@ -48,7 +48,7 @@ const Control = ({addNewWatches}) => {
           className="form-control"
           id="timeZone"
           name="timeZone"
-          value={watch.timeZone}
+          value={formValues.timeZone}
           onChange={onChangeHandler}
           required/>
       </div>

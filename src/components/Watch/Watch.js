@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import shortid from "shortid";
 import { generateArray, convertTimeToDegree } from "../../helpFunc/helpFunctions.js"
 import Marker from "./Marker";
@@ -28,7 +28,7 @@ const Watch = ({ id, title, deleteWatch, timeZone = hourOffset }) => {
     second: second,
   });
 
-  const ref = useRef();
+  // const ref = useRef();
 
   useEffect(() => {
     const timerID = setTimeout(() => {
@@ -44,12 +44,11 @@ const Watch = ({ id, title, deleteWatch, timeZone = hourOffset }) => {
   });
 
   const onClickHandler = () => {
-    const { id } = ref.current.dataset;
     deleteWatch(id);
   };
 
   return (
-    <div ref={ref} className={classes["watch-container"]} data-id={id}>
+    <div className={classes["watch-container"]} data-id={id}>
       <div className={classes["watch-title"]}>
         <h5>{title}</h5>
       </div>
